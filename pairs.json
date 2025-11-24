@@ -1,10 +1,10 @@
 {
-  "Redulė": "Rūtukas",
-  "Tėtis Linas": "Vytuks",
-  "Rūtukas": "Redulė",
-  "Jonelis": "Linukas",
+  "Redulė": "Vytuks",
+  "Tėtis Linas": "Jonelis",
+  "Rūtukas": "Linukas",
+  "Jonelis": "Tėtis Linas",
   "Valentina": "Vaivūni",
-  "Linukas": "Tėtis Linas",
-  "Vaivūni": "Jonelis",
+  "Linukas": "Redulė",
+  "Vaivūni": "Rūtukas",
   "Vytuks": "Valentina"
 }
