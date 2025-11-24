@@ -1,0 +1,367 @@
+:root{
+  --primary: #fafafa;
+  --bg-color: rgb(212, 238, 242);
+  --bg-envelope-color: repeating-linear-gradient(
+    45deg,
+    #b51c1c 0px,
+    #b51c1c 10px,
+    #ffffff 10px,
+    #ffffff 20px);
+  --envelope-tab: #f9e6ce;
+  --envelope-cover: #f5e0c6;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --txt-color: #444;
+  --heart-color: rgb(244, 24, 24);
+}
+
+.snow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.snowflake-dot {
+  position: absolute;
+  top: -10px;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 80%;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(110vh);
+  }
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+/* EKRANAI */
+.screen {
+  max-width: 360px;
+  width: 90%;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ENVELOPE BLOKAS */
+.container > .screen > .envelope-wrapper {
+  background: var(--bg-envelope-color);
+  box-shadow: 0 0 40px var(--shadow-color);
+  padding: 30px 20px;
+  border-radius: 12px;
+}
+
+.envelope-wrapper {
+  position: relative;
+}
+
+.envelope-wrapper > .envelope {
+  position: relative;
+  width: 320px;
+  height: 230px;
+  margin: 0 auto;
+}
+
+.envelope-wrapper > .envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  border-top: 140px solid var(--envelope-tab);
+  border-right: 160px solid transparent;
+  border-left: 160px solid transparent;
+  transform-origin: top;
+  transition: all 0.5s ease-in-out 0.7s;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.13);
+}
+
+.envelope-wrapper > .envelope::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 0px;
+  height: 0px;
+  border-top: 140px solid transparent;
+  border-right: 160px solid var(--envelope-cover);
+  border-bottom: 100px solid var(--envelope-cover);
+  border-left: 160px solid var(--envelope-cover);
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.13);
+}
+
+
+.envelope > .letter {
+  position: absolute;
+  right: 10%;
+  bottom: 0;
+  width: 80%;
+  height: 80%;
+  background: var(--primary);
+  text-align: center;
+  transition: all 1s ease-in-out;
+  box-shadow: 0 0 5px var(--shadow-color);
+  padding: 20px 5px;
+  border-radius: 12px;
+}
+
+.envelope > .letter > .text {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: var(--txt-color);
+  text-align: left;
+  font-size: 14px;
+}
+
+.envelope > .letter > .text p {
+  margin: 6px 0;
+}
+
+.envelope > .letter > .text .from {
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* LIPDUKAS VIETOJ SNAIGĖS */
+.cranberry {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  width: 90px;     /* gali keisti dydį */
+  height: 90px;
+  transform: translate(-50%, -40%);
+  background-image: url("cranberry.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Dingsta, kai vokas atsidaro */
+.flap > .cranberry {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+
+/* Kai vokas atsidaro – trikampiai (voko forma) dingsta */
+.flap > .envelope::before,
+.flap > .envelope::after {
+  display: none;
+}
+
+/* Snaigė dingsta */
+.flap > .cranberry {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -40%) scale(0.4);
+}
+
+/* Lipdukas dingsta, kai vokas atidaro */
+.flap .sticker {
+  opacity: 0;
+  transform: scale(0.6) rotate(0deg);
+}
+
+.flap .sticker1 {
+  opacity: 0;
+  transform: scale(0.6) rotate(0deg);
+}
+
+.flap .sticker2 {
+  opacity: 0;
+  transform: scale(0.6) rotate(0deg);
+}
+
+/* Baltas langas išsiplečia ant voko */
+.flap > .envelope > .letter {
+  bottom: 0;
+  right: 0;
+  width: 290px;
+  height: 300px;
+  transform: none;
+  transition: all 0.6s ease-in-out;
+  box-shadow: none;
+  padding: 30px 16px;
+  font-size: 16px;
+}
+
+/* BENDRAS MYGTUKŲ STILIUS */
+button {
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #b51c1c;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.2s;
+  margin-top: 8px;
+  position: relative;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  background: #8f0f13;
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+}
+
+/* START MYGTUKAS PRADŽIOJE NEMATOSI */
+.start-hidden {
+  display: none;
+}
+
+/* FORMOS STILIAI LAIŠKO VIDUJE */
+#formBlock h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 17px;
+  color: #b51c1c;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #4a2f22;
+  font-size: 13px;
+  text-align: center;
+}
+
+select,
+input[type="password"] {
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 2px solid #d0bca4;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.button-row {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+#result {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #b51c1c;
+  text-align: center;
+  font-size: 13px;
+}
+
+
+.name-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.name-card {
+  background: #ffffff;
+  border: 2px solid #d0bca4;
+  padding: 2px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  color: #4a2f22;
+  position: relative;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+.name-card.selected {
+  background: #ffe5e5;
+  border-color: #b31217;
+  color: #b31217;
+  transform: scale(1.05);
+}
+
+.sticker {
+  position: absolute;
+  top: 110px;
+  right: 110px;
+  width: 250px;
+  height: 150px;
+  background-image: url("sticker.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 50;
+}
+
+.sticker1 {
+  position: absolute;
+  top: -30px;
+  right: 30px;
+  width: 200px;
+  height: 100px;
+  background-image: url("sticker1.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 50;
+}
+
+.sticker2 {
+  position: absolute;
+  top: 170px;
+  right: -35px;
+  width: 155px;
+  height: 55px;
+  background-image: url("sticker2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 50;
+}

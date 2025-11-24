@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalėdų senelių dovanų traukimas</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Sniego sluoksnis -->
+    <div class="snow"></div>
+    <div class="container">
+        <div id="envelopeScreen" class="screen">
+            <div class="envelope-wrapper">
+                <div class="envelope">
+                    <div class="letter">
+                        <div class="sticker"></div>
+                            <div class="sticker1"></div>
+                            <div class="sticker2"></div>
+                        <div class="text">
+
+                            <div class="letter-text-block">
+                                <strong>Nykštukai,</strong>
+                                <p>
+                                    Kalėdos - tai metas, kai svarbiausia šiluma, juokas ir buvimas kartu.
+                                    Prašau laikytis šių taisyklių:
+                                    1. Pasiruošk gerą nuotaiką ir lauk kalėdų su džiaugsmu.
+                                    2. Jei turi norų sąrašiuką, pasidalink juo su visais.
+                                    3. Nesakyk artimiesiems ką ištraukei, juk siurprizai yra smagu.
+                                    4. Išleista suma - 30 pinigėlių.
+                                </p>
+                                Paspausk mygtuką žemiau, kad sužinotum, kam ruoši dovaną šiais metais. 🎁
+                                <p class="from">
+                                    Su meile,
+                                    Kalėdų senelio padėjėja, Vaiva 🎅
+                                </p>
+                            </div>
+
+                            <div id="formBlock" class="hidden">
+                                <h2>Dovanų traukimas</h2>
+
+                                <div class="form-group">
+                                    <label>Pasirink savo vardą:</label>
+                                    <div id="nameGrid" class="name-grid"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="codeInput">Įvesk savo slaptą kodą:</label>
+                                    <input type="password" id="codeInput" />
+                                </div>
+
+                                <div class="button-row">
+                                    <button id="checkButton">Sužinoti, kam dovanosiu</button>
+                                </div>
+
+                                <p id="result"></p>
+                            </div>
+
+                            <button id="startButton" class="start-hidden">Pradėti traukimą</button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cranberry"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- VIENINTELIS SCRIPT -->
+    <script src="./script.js"></script>
+</body>
+</html>
